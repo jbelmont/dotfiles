@@ -1,0 +1,44 @@
+
+" This is inideal. I'd prefer to stuff it into a
+" 1.5x1.5 em box and hide the overflow;
+hi TabIcon  width: 1.5em; height: 1.5em;
+
+js <<EOF
+    let css = <![CDATA[
+        /* <css> */
+        tabs > * {
+            height: 1.5em !important;
+            -moz-box-sizing: content-box;
+        }
+        tabs {
+            background-color: $2 !important;
+            padding: 0 !important;
+            border-width: 0 !important;
+            border-bottom: 1px solid $7 !important;
+        }
+        tab {
+            max-height: 1.5em !important;
+            margin: 0 !important;
+            color: $1 !important;
+	    background-image: none !important;
+            background-color: $2 !important;
+            border: 1px solid $3 !important;
+        }
+        tab[selected=true] {
+            color: $5 !important;
+            background-color: $6 !important;
+            border: 1px solid $7 !important;
+        }
+    ]]>.toString();
+    // </css>
+    let ctl = io.system("wmiir read /ctl");
+    if (!ctl)
+        ctl = String(<![CDATA[
+            focuscolors #000000 #81654f #000000
+            normcolors #000000 #c1c48b #81654f
+        ]]>);
+    let args = ctl.match(/^normcolors.*?$/m)[0].split(/ /).concat(
+               ctl.match(/^focuscolors.*?$/m)[0].split(/ /));
+    styles.addSheet(true, "colorscheme", "chrome://*", css.replace(/\$(.)/g, function (m, n1) args[n1]), false);
+EOF
+
