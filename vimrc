@@ -13,23 +13,6 @@ let g:acp_behaviorHtmlOmniLength = -1 "if negative never completed
 """""""""""""""" autocomplete plugin """"""""""""""""""
 
 """"""""""""""""""""" syntax highlighting """"""""""""""""
-let s:extfname = expand("%:e")
-if s:extfname ==? "f90"
-  let fortran_free_source=1
-  unlet! fortran_fixed_source
-elseif s:extfname ==? "f95"
-  let fortran_free_source=1
-  unlet! fortran_fixed_source
-elseif s:extfname ==? "f03"
-  let fortran_free_source=1
-  unlet! fortran_fixed_source
-elseif s:extfname ==? "f08"
-  let fortran_free_source=1
-  unlet! fortran_fixed_source
-else
-  let fortran_fixed_source=1
-  unlet! fortran_free_source
-endif
 syntax on
 filetype plugin indent on
 """"""""""""""""""""" syntax highlighting """"""""""""""""
@@ -125,7 +108,7 @@ au FileType c,cpp,java,perl,javascript,php,css,vim,bash,zsh,sh setlocal comments
 set equalalways "this option always resizes windows equally
 set history=200
 set autoread
-set tw=80
+set tw=82
 set nocompatible
 set laststatus=2
 set encoding=utf-8
@@ -141,13 +124,14 @@ set backspace=eol,start,indent
 set shiftround
 set ignorecase
 set nobackup
-set autoindent smartindent
+set autoindent 
+set smartindent
 set nowb
 set magic " for regular expression turn magic on
 set showmatch " show matching delimiters
 set noswapfile
 set viminfo='20,\"50
-"set makeprg=gcc-4.9\ -o\ -Wall\ -W\ -dynamiclib\ -undefined\ dynamic_lookup\ $* "This is is for executable with unknown linker
+"set makeprg=gcc-4.9\ -Wall\ -W\ -o\ $* 
 set number
 set wildmode=longest:full,full
 set wildmenu
@@ -163,7 +147,7 @@ if has("gui_macvim")
   set equalalways "this option always resizes windows equally
   set history=200
   set autoread
-  set tw=80
+  set tw=82
   set nocompatible
   set laststatus=2
   set encoding=utf-8
@@ -179,7 +163,8 @@ if has("gui_macvim")
   set shiftround
   set ignorecase
   set nobackup
-  set autoindent smartindent
+  set autoindent 
+  set smartindent
   set nowb
   set magic " for regular expression turn magic on
   set showmatch " show matching delimiters
@@ -237,12 +222,12 @@ map <leader>a :w!<CR>:!aspell check %<CR>:e! %<CR>
 
 " Tab movement keys
 nnoremap gf  :tabfirst<CR>
-nnoremap gl  :tabnext<CR>
-nnoremap gh  :tabprev<CR>
 nnoremap gL  :tablast<CR>
 nnoremap gt  :tabedit<Space>
 nnoremap gn  :tabnext<Space>
 nnoremap gd  :tabclose<CR>
+nnoremap gl :tabnext<CR>
+nnoremap gh :tabprev<CR>
 
 " Move tabs left or right
 noremap gk :call TabMove(+1)<CR>

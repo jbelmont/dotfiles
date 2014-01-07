@@ -50,14 +50,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 # PATH variables 
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/ruby/bin:/usr/local/opt/gnu-tar/libexec/gnubin:\
+/Users/jean-marcelbelmont/bin:/usr/local/opt/ruby193/bin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/share/man:/usr/bin/man:/opt/local/share/man:$MANPATH"
 
 ### Aliases defined
 alias cp='cp -i'
 alias dirs="dirs -v"
 alias ls='ls --color=auto'
-alias vless='vim -u /usr/local/share/vim/vim73/macros/less.vim'
+alias vless='vim -u /usr/local/share/vim/vim74/macros/less.vim'
 alias info='info --vi-keys'
 alias mv='mv -i'
 alias p='pushd'
@@ -107,7 +108,7 @@ function mkdircd() {
 
 # function that rewrites zsh pwd builtin
 function pwd() {
-	echo -n "===> "
+	echo -n "==> "
 	builtin pwd
 }
 
@@ -115,12 +116,8 @@ function processNum() {
   ps -ax | grep
 }
 
-function my_server() {
-  ssh -X jbelmont@216.158.67.244
-}
-
-function fsulinux() {
-  ssh jbelmont@fsulinux1.uncfsu.edu
+function hostigation_server() {
+  ssh root@69.85.84.104
 }
 
 # source tmuxinator in zsh
