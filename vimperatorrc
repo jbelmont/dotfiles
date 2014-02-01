@@ -1,0 +1,85 @@
+set runtimepath+=~/vimperator-plugins
+
+let mapleader = ","
+
+set scrollbars
+set notabnumbers
+set status=tabcount,bookmark,position,input,location
+set history=5000
+set newtab=all
+set visualbell
+hi Bell opacity: .5;
+
+" show current mode on command line
+set showmode
+
+" custom browser title
+"set titlestring=Vimperator
+
+" Set color scheme in Vimperator
+colorscheme solarized
+
+" show destination link on command line
+set showstatuslinks=2
+
+" when tabs are automatically activated
+set activate=homepage,quickmark,paste
+
+" s Search engines and keyword URLs
+" f Local files
+" l awesome bar entries (b and h sorted intelligently)
+" b Bookmarks
+" h History
+" S Search engine suggestions
+" t Open tabs
+set complete=sflbtS
+
+" default search engine for :[tab]open [arg]
+set defsearch=google
+
+" level of verbosity (0-15) (view with :messages)
+set verbose=3
+
+" defines completion behaviour
+set wildmode=list:longest,full
+
+" ignore case in searches
+set ignorecase
+
+" override ignorecase if uppercase
+set smartcase
+
+" set vim is editor in vimperator
+set editor="/usr/local/bin/mvim -f"
+
+""key mapping
+noremap j 3j
+noremap k 3k
+noremap J <C-d>
+noremap K <C-u>
+noremap gb <C-b>
+noremap gf  <C-f>
+
+" navigate tabs with H/L
+noremap h gT
+noremap l gt
+noremap <A-h> :back<CR>
+noremap <A-l> :forward<CR>
+
+" move current tab left/right
+noremap <S-Right> :tabmove! +1<CR>
+noremap <S-Left>  :tabmove! -1<CR>
+
+" Add some vimperator key commands to certain sites
+:command! -nargs=+ lazy autocmd VimperatorEnter .* &lt;args>
+:lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+:lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+:lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
+:lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p &lt;Space> &lt;S-Space> z b &lt; > q w e,g
+:lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m &lt;Del> &lt;C-S-Left> &lt;C-S-Right>
+:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/list' o j k
+:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/detail' u
+
+" cd to the home directory at startup
+:cd ~
+
