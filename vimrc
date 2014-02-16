@@ -13,8 +13,8 @@ let g:acp_behaviorHtmlOmniLength = -1 "if negative never completed
 """""""""""""""" autocomplete plugin """"""""""""""""""
 
 """"""""""""""""""""" syntax highlighting """"""""""""""""
-syntax on
 filetype plugin indent on
+syntax on
 """"""""""""""""""""" syntax highlighting """"""""""""""""
 
 """"""""""""""""""""" vim powerline plugin """""""""""""""""""
@@ -24,6 +24,10 @@ let g:Powerline_symbols = 'fancy'
 """""""""""""""""""""gundo plugin """"""""""""""""
 let g:gundo_width = 75
 """"""""""""""""""""" gundo plugin """"""""""""""""
+
+""""""""""""""""""""" yankring plugin """""""""""""""""""""""""
+let g:yankring_history_dir = '~/.vim/yankring'
+let g:yankring_history_file = 'yankring_history'
 
 """""""""""""""""""supertab"""""""""""""""""""""""""""""""""""""
 " don't map <cr> as it's causing conflicts with delimitmate's; expand cr
@@ -114,10 +118,10 @@ set laststatus=2
 set encoding=utf-8
 set wildmenu
 set ruler
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
-set softtabstop=2
+set softtabstop=4
 set cmdheight=1
 set hid
 set backspace=eol,start,indent
@@ -153,10 +157,10 @@ if has("gui_macvim")
   set encoding=utf-8
   set wildmenu
   set ruler
-  set tabstop=2
-  set shiftwidth=2
+  set tabstop=4
+  set shiftwidth=4
   set expandtab
-  set softtabstop=2
+  set softtabstop=4
   set cmdheight=1
   set hid
   set backspace=eol,start,indent
@@ -199,6 +203,10 @@ nnoremap <leader>e <C-w><C-w>
 nnoremap <leader>q <C-w>q
 " Map ,v to be control v 
 nnoremap <leader>v <C-v>
+
+"""" Visual Mode Copy and Cut Commands to Mac ClipBoard """""
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 
 
 " Command T plugin key mappings
 " default map is nnoremap <leader>t  :CommandT<CR>
