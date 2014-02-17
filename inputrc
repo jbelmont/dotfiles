@@ -1,0 +1,55 @@
+set editing-mode vi
+set keymap vi
+
+# be 8 bit clean
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# lazy tab completion
+#set show-all-if-ambiguous on
+set completion-ignore-case on
+
+# Ctrl+arrows
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# Alt+arrows
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
+# Vim-style word movement: Alt+[w|e|b]
+"\ew": forward-word
+"\ee": forward-word
+"\eb": backward-word
+
+# Alt+[h|l]
+"\eh": beginning-of-line
+"\el": end-of-line
+"\M-h": beginning-of-line
+"\M-l": end-of-line
+
+# Vim-style history search: Alt+[j|k]
+"\ej": history-search-forward
+"\ek": history-search-backward
+"\M-j": history-search-forward
+"\M-k": history-search-backward
+
+# Alt+r/s instead of Ctrl+r/s
+"\er": reverse-search-history
+"\es": forward-search-history
+"\M-r": reverse-search-history
+"\M-s": forward-search-history
+
+#set editing-mode vi
+$if mode=vi
+  set keymap vi-command
+  Control-l: clear-screen
+  "gg": beginning-of-history
+  "G": end-of-history
+  "j": history-search-forward
+  "k": history-search-backward
+  set keymap vi-insert
+  "jj": vi-movement-mode
+  "\C-w": backward-kill-word
+$endif
