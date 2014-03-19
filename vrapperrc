@@ -1,0 +1,52 @@
+set ignorecase
+set smartcase
+set autoindent
+set smartindent 
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set hlsearch
+set incsearch
+set clipboard=autoselect
+
+"==================================================
+" Basic key mappings
+"==================================================
+" Esc
+inoremap jj <Esc>"_x
+
+" Redo
+nnoremap U  :Redo<CR>
+
+"set mapleader to be the comma
+let mapleader=","
+
+"==================================================
+" Eclipse actions
+"==================================================
+" References for eclipseaction
+"   http://help.eclipse.org/help33/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/ui/texteditor/IWorkbenchActionDefinitionIds.html
+"   http://help.eclipse.org/help33/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/ui/texteditor/ITextEditorActionDefinitionIds.html
+"   http://help.eclipse.org/ganymede/topic/org.eclipse.jdt.doc.isv/reference/api/org/eclipse/jdt/ui/actions/IJavaEditorActionDefinitionIds.html
+
+"==================================================
+" Source
+"==================================================
+"definition ID of the source -> override methods action 
+eclipseaction OverrideMethods org.eclipse.jdt.ui.edit.text.java.override.methods
+
+"Action definition ID of the source -> add block comment action 
+eclipseaction AddBlockComment org.eclipse.jdt.ui.edit.text.java.add.block.comment
+
+"Add JavaDoc
+eclipseaction AddJavaDocComment org.eclipse.jdt.ui.edit.text.java.add.javadoc.comment
+
+"definition ID of the source -> add unimplemented constructors action 
+eclipseaction AddUnimplementedContructors org.eclipse.jdt.ui.edit.text.java.add.unimplemented.constructors
+
+" Format
+"definition ID of the source -> format action 
+eclipseaction Format org.eclipse.jdt.ui.edit.text.java.format
+vnoremap = :Format<CR>
