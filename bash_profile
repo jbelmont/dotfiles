@@ -1,10 +1,4 @@
-function httpdcount 
-{
-  ps aux | grep httpd | grep -v grep | wc -l
-}
 
-# Source the bashrc since Mac OS X source bash_profile by default first
-if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
-fi
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
