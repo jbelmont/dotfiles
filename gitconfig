@@ -6,6 +6,11 @@
 	spr = "!f() { git fetch -fu ${2:-origin} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
     	jiralist = "!f() { git log origin/master...release/$1 --oneline --no-merges --pretty=format:'* %s' | egrep \"([A-Z]{2,}-)([0-9]+)\"; }; f"
 	cu = "!git pull -p && git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	nuke = "!f() { git checkout $(git status | grep modified | cut -d ':' -f2 | xargs -L1) ; }; f"
+        gc-pull = "!fn() { git gc; git pull; }; fn"
+        local-list = "!fn() { git config --local --list; }; fn;"
+        global-list = "!fn() { git config --global --list; }; fn;"
+        system-list = "!fn() { git config --system --list; }; fn;"
 [core]
 	editor = nvim
 	excludesfile = /Users/marcelbelmont/.gitignore_global
