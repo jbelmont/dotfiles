@@ -1,0 +1,9 @@
+function log_file() {
+  CURRENT_DIR=$(printf "/Users/marcel.belmont/temp/%s" $(basename "$PWD"))
+  if [[ ! -d "${CURRENT_DIR}" ]]; then
+    mkdir -p $CURRENT_DIR > /dev/null
+  fi
+  CURRENT_TIME=$(date +"%d-%M-%Y:%T")
+  BASE_FOLDER=$(basename "${PWD}")
+  printf "%s/%s_%s.log" "${CURRENT_DIR}" "${BASE_FOLDER}" "${CURRENT_TIME}"
+}

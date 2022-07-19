@@ -97,6 +97,7 @@ alias tf_init='terraform init --upgrade=true'
 alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 alias mvimdiff='/Applications/MacVim.app/Contents/bin/mvimdiff'
 
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:/opt/homebrew/opt/inetutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:/Users/marcel.belmont/.local/bin:$PATH"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 export PATH="$GOROOT/bin:$PATH"
@@ -137,12 +138,11 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 shopt -u histverify
 
 # Personal Functions
+FUNCTIONS=($(find ${HOME}/.functions/*))
 if [[ -d "${HOME}/.functions" ]]; then
-    for f in "$(find ${HOME}/.functions)"
+    for f in "${FUNCTIONS[@]}"
     do
-        if [[ -f "${f}" ]]; then
-            source $f
-        fi
+      source $f
     done
 fi
 . "$HOME/.cargo/env"

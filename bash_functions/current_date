@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function current_date() {
+  echo $(date +"%d-%M-%Y")
+}
